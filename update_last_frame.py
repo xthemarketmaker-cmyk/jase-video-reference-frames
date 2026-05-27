@@ -48,14 +48,18 @@ def main():
     shutil.copy2(source_path, TARGET_IMAGE)
     print(f"Copied to: {TARGET_IMAGE}")
 
-    # Git operations
+    # Git operations (for history + backup)
     run(["git", "add", "last-frame.jpg"])
     run(["git", "commit", "-m", f"Update last-frame.jpg — {datetime.now().isoformat()}"])
     run(["git", "push"])
 
+    # Deploy to Netlify (this is the live host)
+    print("Deploying to Netlify...")
+    run(["netlify", "deploy", "--prod", "--dir", "."])
+
     print("\n✅ Success!")
     print("Stable public URL (use this in video tools):")
-    print("https://raw.githubusercontent.com/xthemarketmaker-cmyk/jase-video-reference-frames/main/last-frame.jpg")
+    print("https://jase-video-frames.netlify.app/last-frame.jpg")
 
 if __name__ == "__main__":
     main()

@@ -2,15 +2,33 @@
 
 Automated last-frame hosting for consistent AI video generation.
 
+Hosted on **Netlify** with Git backup.
+
+## Stable Public URL (use this in video tools)
+https://jase-video-frames.netlify.app/last-frame.jpg
+
 ## How it works
-A script overwrites `last-frame.jpg` and pushes to this repo.
+Run the updater script with the path to your actual last scene frame.
 
-The stable public URL is always:
-- Raw: https://raw.githubusercontent.com/xthemarketmaker-cmyk/jase-video-reference-frames/main/last-frame.jpg
-- GitHub Pages (once enabled): https://xthemarketmaker-cmyk.github.io/jase-video-reference-frames/last-frame.jpg
+The script:
+1. Copies the real last frame as `last-frame.jpg`
+2. Commits + pushes to GitHub (history/backup)
+3. Deploys to Netlify (live hosting)
 
-Use the **raw** URL for video tools.
+The URL above always serves the **actual last frame** — no text descriptions.
 
 ## Update command (automated)
-python update_last_frame.py "C:\path\to\your\last-frame.jpg"
+```bash
+python "C:\Users\Hardcore\jase-frame-host\update_last_frame.py" "C:\path\to\your\last-scene-frame.jpg"
+```
 
+Example:
+```bash
+python "C:\Users\Hardcore\jase-frame-host\update_last_frame.py" "C:\Users\Hardcore\Videos\TheLastLight\scene_01_last.jpg"
+```
+
+## One-time setup done
+- Netlify site created and linked: jase-video-frames
+- Update script enhanced to deploy directly to Netlify
+
+This gives you fully automated, actual-image last-frame chaining.
