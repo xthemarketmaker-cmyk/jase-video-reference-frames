@@ -54,8 +54,10 @@ def main():
     run(["git", "push"])
 
     # Deploy to Netlify (this is the live host)
+    # Use full path because some Python environments (uv, conda, etc.) don't resolve npm globals
+    netlify_path = "/c/Users/Hardcore/AppData/Roaming/npm/netlify"
     print("Deploying to Netlify...")
-    run(["netlify", "deploy", "--prod", "--dir", "."])
+    run([netlify_path, "deploy", "--prod", "--dir", "."])
 
     print("\n✅ Success!")
     print("Stable public URL (use this in video tools):")
